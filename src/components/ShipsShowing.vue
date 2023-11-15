@@ -1,28 +1,26 @@
 <template>
     <div>КОРАБЛИ</div>
-    <button @click="updateVehicles">обновить</button>
     <div>
       <div v-if="!loading" >
     <h1>Список кораблей</h1>
-
-    <!--<p :="vehicles">{{vehicles}}</p>-->
     <ul v-for="vehicle in vehicles" :key="vehicle">
       <li v-for="(vehicle,key) in vehicle" :key="key">
         <h2>{{ vehicle.title }}</h2>
         <p>{{ vehicle.description }}</p>
-        <img v-if="vehicle.icons && vehicle.icons.large" :src="vehicle.icons.large" alt="Vehicle Icon" />
-        <!-- Другие свойства корабля -->
+        <img :src="vehicle.icons.large" alt="Vehicle Icon" />
         <p>Level: {{ vehicle.level }}</p>
-        <p v-if="vehicle.type">Type: {{ vehicle.type.name }}</p>
-        <p v-if="vehicle.nation">Nation: {{ vehicle.nation.name }}</p>
-        <!-- Дополнительные данные о корабле -->
+        <p>Type title: {{ vehicle.type.title }}</p>
+        <img :src="vehicle.type.icons.default" alt="type_ico"/>
+        <p>Nation: {{ vehicle.nation.name }}</p>
+        <p>Nation title: {{ vehicle.nation.title }}</p>
+        <p v-bind:style="{ backgroundColor: vehicle.nation.color }">Nation color: {{ vehicle.nation.color }}</p>
+        <img :src="vehicle.nation.icons.small" alt="nation_ico"/>
       </li>
     </ul>
 
   </div>
-  
+
   <div v-else>
-    <!-- Если данные еще не загружены, можно показать какой-то индикатор загрузки -->
     <p>Loading...</p>
   </div>
 
@@ -30,26 +28,18 @@
   </template>
   
 <script lang="ts">
-import Vue from 'vue'
 import { defineComponent, ref, watch, reactive } from 'vue';
 import { useQuery, UseQueryReturn } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
-import { ApolloClient } from '@apollo/client/core';
 //import gqlquery from '../apollo/queries/query.graphql';
-import {Vehicles} from '../apollo/schema';
-import {GET_SHIPS, Vehicle} from '@/apollo/queries/query';
-//import { query } from '@/query.gql';
+import {Vehicles} from '@/apollo/schema';
+import {GET_SHIPS} from '@/apollo/queries/query';
 
 export default defineComponent({
-  data() {
-    return {
-       // Инициализация переменной для хранения данных о кораблях
-
-    };
-  },
   
   setup() {
-    var vehicles = ref<Vehicle[]>([]);
+
+    var vehicles = ref<Vehicles[]>([]);
     const { result, loading } = useQuery(GET_SHIPS);
 
     watch(loading, (newValue, oldValue) => {
@@ -61,36 +51,9 @@ export default defineComponent({
       loading,
       vehicles
     };
+
   },
 
 })
 
-  </script>
-
-<style scoped>
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 15px;
-}
-
-li h2 {
-  margin-top: 0;
-}
-
-li img {
-  max-width: 100px;
-  max-height: 100px;
-  display: block;
-  margin-bottom: 10px;
-}
-
-li p {
-  margin-bottom: 5px;
-}
-</style>
+</script>

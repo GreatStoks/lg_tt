@@ -16,7 +16,4 @@ import {
   })
   provideApolloClient(apolloClient);
 
-  //const { result, loading, onError, onResult } = useQuery(query)
-  
-  //export let users = useResult(result, [], data => data.users )
   export default ApolloClient;

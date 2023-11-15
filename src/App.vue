@@ -25,6 +25,35 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #ee8f58;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+
+}
+
+
+li {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 15px;
+
+}
+
+li h2 {
+  margin-top: 0;
+}
+
+li img {
+  max-width: 300px;
+  max-height: 300px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+li p {
+  margin-bottom: 5px;
 }
 </style>

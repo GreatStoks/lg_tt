@@ -1,4 +1,7 @@
-query AllShips{
+import { gql } from '@apollo/client/core';
+
+export const GET_USERS = gql`
+query {
         vehicles {
             title
         description
@@ -26,3 +29,4 @@ query AllShips{
         }
     }
 }
+`;
