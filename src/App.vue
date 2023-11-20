@@ -1,7 +1,4 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-  </nav>
   <router-view/>
 </template>
 
@@ -13,7 +10,6 @@
   text-align: center;
   color: #bec2c9;
   background: linear-gradient(180deg, rgba(3,11,22,1) 36%, rgba(4,31,70,1) 79%);
-
 }
 
 body {
@@ -22,31 +18,22 @@ body {
   padding:0
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #ee8f58;
-}
-
 ul {
   list-style: none;
   padding: 0;
-
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 
 li {
+  flex: 1 1 25%;
+  box-sizing: border-box;
+  text-align: center;
   border: 1px solid #ccc;
   padding: 10px;
-  margin-bottom: 15px;
-
+  margin: 5px;
 }
 
 li h2 {
@@ -63,4 +50,13 @@ li img {
 li p {
   margin-bottom: 5px;
 }
+
+
+@media screen and (max-width: 998px) {
+  li {
+    flex: 1 1 100%;
+  }
+
+}
+
 </style>

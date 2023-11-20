@@ -1,23 +1,17 @@
 <template>
-  <div class="hello">
-
+  <div class="nav">
+    <router-link to="/">Home</router-link>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
-@Options({
-  props: {
-   
-  }
-})
 export default class NavPan extends Vue {
 
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
@@ -31,6 +25,18 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #6e86a7;
+}
+.nav {
+  padding: 30px;
+  font-size: 20px;
+}
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.nav a.router-link-exact-active {
+  color: #6e86a7;
 }
 </style>

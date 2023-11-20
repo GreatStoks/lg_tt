@@ -1,13 +1,13 @@
 <template>
   <div class="home">
     <NavPan/>
-    <ShipsShowing/>
   </div>
+  <ShipsShowing/>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import NavPan from '@/components/NavPan.vue'; // @ is an alias to /src
+import NavPan from '@/components/NavPan.vue'; 
 import ShipsShowing from '@/components/ShipsShowing.vue';
 
 @Options({
